@@ -19,10 +19,10 @@ class SantriController extends Controller
     public function index()
     {
         //get posts
-        $santris = Santri::latest()->paginate(5);
+        $santris = Santri::latest()->paginate(10);
 
         //return collection of posts as a resource
-        return new PostResource(true, 'List Data Posts', $santris);
+        return new PostResource(true, 'List Data Santri', $santris);
     }
 
     /**
@@ -42,7 +42,7 @@ class SantriController extends Controller
             'status' => 'required',
             'room' => 'required',
             'division' => 'required',
-            'gambar'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'gambar'    => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             
         ]);
 
@@ -66,7 +66,7 @@ class SantriController extends Controller
         ]);
 
         //return response
-        return new PostResource(true, 'Data Post Berhasil Ditambahkan!', $santri);
+        return new PostResource(true, 'Santri Berhasil Ditambahkan!', $santri);
     }
 
 
@@ -79,7 +79,7 @@ class SantriController extends Controller
     public function show(Santri $santri)
     {
         //return single post as a resource
-        return new PostResource(true, 'Data Post Ditemukan!', $santri);
+        return new PostResource(true, 'Data Santri Ditemukan!', $santri);
     }
     
     /**
@@ -141,7 +141,7 @@ class SantriController extends Controller
         }
 
         //return response
-        return new PostResource(true, 'Data Post Berhasil Diubah!', $santri);
+        return new PostResource(true, 'Data Santri Berhasil Diubah!', $santri);
     }
     
     /**
@@ -159,6 +159,6 @@ class SantriController extends Controller
         $santri->delete();
 
         //return response
-        return new PostResource(true, 'Data Post Berhasil Dihapus!', null);
+        return new PostResource(true, 'Data Santri Berhasil Dihapus!', null);
     }
 }
