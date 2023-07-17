@@ -15,7 +15,6 @@ pnpm dev
 2. php artisan key:generate  
 3. php artisan cache:clear
 4. php artisan migrate
+5. php artisan serve
 
-php artisan serve
-
-nyalain laragon/xampp
+Start Laragon/XAMPP
