@@ -41,7 +41,7 @@ class SantriController extends Controller
             'gender' => 'required',
             'status' => 'required',
             'room' => 'required',
-            'division' => 'required',
+            'divisi' => 'required',
             'gambar'    => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             
         ]);
@@ -62,7 +62,7 @@ class SantriController extends Controller
             'gender'    => $request->gender,
             'status'    => $request->status,
             'room'      => $request->room,
-            'division'   => $request->division
+            'divisi'   => $request->divisi
         ]);
 
         //return response
@@ -98,7 +98,7 @@ class SantriController extends Controller
             'gender' => 'required',
             'status' => 'required',
             'room' => 'required',
-            'division' => 'required',
+            'divisi' => 'required',
         ]);
 
         //check if validation fails
@@ -123,7 +123,7 @@ class SantriController extends Controller
                 'gender'    => $request->gender,
                 'status'    => $request->status,
                 'room'      => $request->room,
-                'division'   => $request->division
+                'divisi'   => $request->divisi
                 
             ]);
 
@@ -136,7 +136,7 @@ class SantriController extends Controller
             'gender'    => $request->gender,
             'status'    => $request->status,
             'room'      => $request->room,
-            'division'   => $request->division
+            'divisi'   => $request->divisi
             ]);
         }
 

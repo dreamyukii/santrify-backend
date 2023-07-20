@@ -11,16 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('santris', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->string('gambar');
-            $table->string('gender');
-            $table->string('status');
-            $table->string('room');
-            $table->string('division');
-            $table->timestamps();
+
+        Schema::create('kamars', function (Blueprint $table) {
+            $table->increments('id_room');
+            $table->string('gambar')->nullable();
+            $table->string('nama_kamar');
+            $table->string('status')->default('kosong');
+
         });
+
+        Schema::create('divisis', function (Blueprint $table) {
+            $table->increments('id_divisi');
+            $table->string('gambar')->nullable();
+            $table->string('nama_divisi');
+        });
+
     }
 
     /**
@@ -28,6 +33,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('santris');
+        
+        Schema::dropIfExists('kamars');
+        Schema::dropIfExists('divisis');
     }
 };
