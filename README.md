@@ -21,4 +21,7 @@ Start Laragon/XAMPP
 6. php artisan jwt:secret
 7. php artisan storage:link
 
+to start developing:
+
+php artisan serve
 
