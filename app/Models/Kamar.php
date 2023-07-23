@@ -12,6 +12,6 @@ class Kamar extends Model
         'gambar',
         'nama_kamar',
         'status'
-    ];php artisan jwt:secret
+    ];
 
 }
