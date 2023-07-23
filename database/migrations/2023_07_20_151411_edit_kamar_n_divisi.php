@@ -11,7 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        
+        DB::table('kamars')->insert([
+            array(
+                'nama_kamar' => "Budak Pantura",
+                'id_room' => 1,
+                'status' => "kosong",
+            )
+            
+        ]);
+
+        DB::table('divisis')->insert([
+            array(
+                'nama_divisi' => "Rakyat Belanda",
+                'id_divisi' => 1
+            )
+        ]);
     }
 
     /**
