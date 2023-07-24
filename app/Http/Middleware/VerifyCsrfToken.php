@@ -13,7 +13,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        'https://santrify.vercel.app/',
-        'https://santrify.vercel.app/dashboard/santri/create'
+        'api/*'
     ];
 }
