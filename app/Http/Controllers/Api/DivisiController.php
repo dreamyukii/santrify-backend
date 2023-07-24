@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PostResource;
 use App\Models\Divisi;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,11 @@ class DivisiController extends Controller
      */
     public function index()
     {
-        //
+        // //get divisi
+        // $divisis = Divisi::latest()->paginate(10);
+
+        // // return list divisi
+        // return new PostResource(true,'List Divisi', $divisis);
     }
 
     /**
