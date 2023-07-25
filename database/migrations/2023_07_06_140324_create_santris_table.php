@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('gambar')->nullable();
             $table->string('nama_kamar');
             $table->string('status')->default('kosong');
+            $table->timestamps();
 
         });
 
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->increments('id_divisi');
             $table->string('gambar')->nullable();
             $table->string('nama_divisi');
+            $table->timestamps();
         });
 
     }

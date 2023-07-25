@@ -42,7 +42,7 @@ class SantriController extends Controller
             'status' => 'required',
             'room' => 'required',
             'divisi' => 'required',
-            'gambar'    => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'gambar'  => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             
         ]);
 
