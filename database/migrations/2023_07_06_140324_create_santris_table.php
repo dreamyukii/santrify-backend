@@ -20,7 +20,6 @@ return new class extends Migration
             $table->timestamps();
 
         });
-
         Schema::create('divisis', function (Blueprint $table) {
             $table->increments('id_divisi');
             $table->string('gambar')->nullable();
@@ -35,7 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        
         Schema::dropIfExists('kamars');
         Schema::dropIfExists('divisis');
     }

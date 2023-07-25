@@ -12,8 +12,4 @@ class Divisi extends Model
         'gambar',
         'nama_divisi'
     ];
-    // public function santri()
-    // {
-    //     return $this->belongsTo('App\Santri');
-    // }
 }

@@ -30,7 +30,7 @@ class Santri extends Model
 
     public function divisi()
     {
-        return $this->belongsTo(divisi::class, 'divisi','id_divisi');
+        return $this->belongsTo(Divisi::class, 'divisi','id_divisi');
     }
 
 }

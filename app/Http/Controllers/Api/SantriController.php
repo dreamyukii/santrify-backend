@@ -11,26 +11,14 @@ use Illuminate\Support\Facades\Validator;
 
 class SantriController extends Controller
 {    
-    /**
-     * index
-     *
-     * @return void
-     */
     public function index()
     {
-        //get posts
-        $santris = Santri::latest()->paginate(10);
+        //get santri
+        $santris = Santri::oldest()->paginate(50);
 
         //return collection of posts as a resource
         return new PostResource(true, 'List Data Santri', $santris);
     }
-
-    /**
-     * store
-     *
-     * @param  mixed $request
-     * @return void
-     */
 
     public function store(Request $request)
     {
@@ -69,26 +57,12 @@ class SantriController extends Controller
         return new PostResource(true, 'Santri Berhasil Ditambahkan!', $santri);
     }
 
-
-    /**
-     * show
-     *
-     * @param  mixed $post
-     * @return void
-     */
     public function show(Santri $santri)
     {
         //return single post as a resource
         return new PostResource(true, 'Data Santri Ditemukan!', $santri);
     }
-    
-    /**
-     * update
-     *
-     * @param  mixed $request
-     * @param  mixed $post
-     * @return void
-     */
+
     public function update(Request $request, Santri $santri)
     {
         //define validation rules
@@ -144,12 +118,6 @@ class SantriController extends Controller
         return new PostResource(true, 'Data Santri Berhasil Diubah!', $santri);
     }
     
-    /**
-     * destroy
-     *
-     * @param  mixed $post
-     * @return void
-     */
     public function destroy(Santri $santri)
     {
         //delete image
