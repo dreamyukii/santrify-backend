@@ -20,9 +20,8 @@ return new class extends Migration
             $table->integer('room')->unsigned();
             $table->integer('divisi')->unsigned();
             $table->timestamps();
-            $table->foreign('room')->references('id_room')->on('kamars');
-            $table->foreign('divisi')->references('id_divisi')->on('divisis');
-            
+            $table->foreign('room')->references('id')->on('kamars');
+            $table->foreign('divisi')->references('id')->on('divisis');
         });
 
 

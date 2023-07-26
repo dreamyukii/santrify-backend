@@ -31,7 +31,7 @@ class KamarController extends Controller
          $validator = Validator::make($request->all(), [
             'nama_kamar' => 'required',
             'status' => 'required',
-            'gambar'    => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         //check if validation fails
@@ -46,7 +46,7 @@ class KamarController extends Controller
         //create post
         $kamar = Kamar::create([
             'gambar'     => $image->hashName(),
-            'nama_kamar'      => $request->nama_kamar,
+            'nama_kamar' => $request->nama_kamar,
             'status'      => $request->status
         ]);
 
@@ -115,7 +115,7 @@ class KamarController extends Controller
     public function destroy(Kamar $kamar)
     {
         //delete image
-        Storage::delete('public/divisi/'.$kamar->image);
+        Storage::delete('public/kamar/'.$kamar->image);
 
         //delete kamar
         $kamar->delete();

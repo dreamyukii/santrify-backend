@@ -14,7 +14,7 @@ return new class extends Migration
         DB::table('kamars')->insert([
             array(
                 'nama_kamar' => "Budak Pantura",
-                'id_room' => 1,
+                'id' => 1,
                 'status' => "kosong",
             )
             
@@ -23,7 +23,7 @@ return new class extends Migration
         DB::table('divisis')->insert([
             array(
                 'nama_divisi' => "Rakyat Belanda",
-                'id_divisi' => 1
+                'id' => 1
             )
         ]);
     }

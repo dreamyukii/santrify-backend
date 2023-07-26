@@ -13,7 +13,7 @@ return new class extends Migration
     {
 
         Schema::create('kamars', function (Blueprint $table) {
-            $table->increments('id_room');
+            $table->increments('id');
             $table->string('gambar')->nullable();
             $table->string('nama_kamar');
             $table->string('status')->default('kosong');
@@ -21,7 +21,7 @@ return new class extends Migration
 
         });
         Schema::create('divisis', function (Blueprint $table) {
-            $table->increments('id_divisi');
+            $table->increments('id');
             $table->string('gambar')->nullable();
             $table->string('nama_divisi');
             $table->timestamps();

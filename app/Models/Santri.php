@@ -25,12 +25,12 @@ class Santri extends Model
     protected $with = [ 'kamar','divisi'];
     public function kamar()
     {
-        return $this->belongsTo(Kamar::class, 'room','id_room');
+        return $this->belongsTo(Kamar::class, 'room','id');
     }
 
     public function divisi()
     {
-        return $this->belongsTo(Divisi::class, 'divisi','id_divisi');
+        return $this->belongsTo(Divisi::class, 'divisi','id');
     }
 
 }
