@@ -9,7 +9,7 @@ class Kamar extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'gambar',
+        'image',
         'nama_kamar',
         'status'
     ];

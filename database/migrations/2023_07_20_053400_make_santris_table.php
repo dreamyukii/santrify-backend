@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('santris', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama',100);
-            $table->string('gambar');
+            $table->string('image');
             $table->string('gender');
             $table->string('status')->default('aktif');
             $table->integer('room')->unsigned();

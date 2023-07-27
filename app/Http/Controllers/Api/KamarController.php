@@ -31,7 +31,7 @@ class KamarController extends Controller
          $validator = Validator::make($request->all(), [
             'nama_kamar' => 'required',
             'status' => 'required',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         //check if validation fails
@@ -40,12 +40,12 @@ class KamarController extends Controller
         }
 
         //upload image
-        $image = $request->file('gambar');
+        $image = $request->file('image');
         $image->storeAs('public/kamar', $image->hashName());
 
         //create post
         $kamar = Kamar::create([
-            'gambar'     => $image->hashName(),
+            'image'     => $image->hashName(),
             'nama_kamar' => $request->nama_kamar,
             'status'      => $request->status
         ]);
@@ -71,7 +71,7 @@ class KamarController extends Controller
                  $validator = Validator::make($request->all(), [
                     'nama_kamar' => 'required',
                     'status' => 'required',
-                    'gambar'    => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+                    'image'    => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
                 ]);
         
                 //check if validation fails
@@ -80,10 +80,10 @@ class KamarController extends Controller
                 }
         
                 //check if image is not empty
-                if ($request->hasFile('gambar')) {
+                if ($request->hasFile('image')) {
         
                     //upload image
-                    $image = $request->file('gambar');
+                    $image = $request->file('image');
                     $image->storeAs('public/kamar', $image->hashName());
         
                     //delete old image
@@ -91,7 +91,7 @@ class KamarController extends Controller
         
                     //update post with new image
                     $kamar->update([
-                        'gambar'     => $image->hashName(),
+                        'image'     => $image->hashName(),
                         'nama_kamar'   => $request->nama_kamar,
                         'status'   => $request->status
                     ]);

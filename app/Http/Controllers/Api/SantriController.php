@@ -30,7 +30,7 @@ class SantriController extends Controller
             'status' => 'required',
             'room' => 'required',
             'divisi' => 'required',
-            'gambar'  => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'image'  => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             
         ]);
 
@@ -40,12 +40,12 @@ class SantriController extends Controller
         }
 
         //upload image
-        $image = $request->file('gambar');
+        $image = $request->file('image');
         $image->storeAs('public/santri', $image->hashName());
 
         //create post
         $santri = Santri::create([
-            'gambar'     => $image->hashName(),
+            'image'     => $image->hashName(),
             'nama'      => $request->nama,
             'gender'    => $request->gender,
             'status'    => $request->status,
@@ -67,7 +67,7 @@ class SantriController extends Controller
     {
         //define validation rules
         $validator = Validator::make($request->all(), [
-            'gambar'     => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'     => 'image|mimes:jpeg,png,jpg|max:2048',
             'nama' => 'required',
             'gender' => 'required',
             'status' => 'required',
@@ -81,10 +81,10 @@ class SantriController extends Controller
         }
 
         //check if image is not empty
-        if ($request->hasFile('gambar')) {
+        if ($request->hasFile('image')) {
 
             //upload image
-            $image = $request->file('gambar');
+            $image = $request->file('image');
             $image->storeAs('public/santri', $image->hashName());
 
             //delete old image
@@ -92,7 +92,7 @@ class SantriController extends Controller
 
             //update post with new image
             $santri->update([
-                'gambar'     => $image->hashName(),
+                'image'     => $image->hashName(),
                 'nama'      => $request->nama,
                 'gender'    => $request->gender,
                 'status'    => $request->status,
@@ -102,10 +102,8 @@ class SantriController extends Controller
             ]);
 
         } else {
-
             //update post without image
             $santri->update([
-            
             'nama'      => $request->nama,
             'gender'    => $request->gender,
             'status'    => $request->status,

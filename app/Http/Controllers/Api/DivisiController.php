@@ -31,7 +31,7 @@ class DivisiController extends Controller
         //define validation rules
         $validator = Validator::make($request->all(), [
             'nama_divisi' => 'required',
-            'gambar'    => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'image'    => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         //check if validation fails
@@ -40,12 +40,12 @@ class DivisiController extends Controller
         }
 
         //upload image
-        $image = $request->file('gambar');
+        $image = $request->file('image');
         $image->storeAs('public/divisi', $image->hashName());
 
         //create divisi
         $divisi = Divisi::create([
-            'gambar'     => $image->hashName(),
+            'image'     => $image->hashName(),
             'nama_divisi' => $request->nama_divisi
         ]);
 
@@ -68,7 +68,7 @@ class DivisiController extends Controller
     {
          //define validation rules
         $validator = Validator::make($request->all(), [
-            'gambar'     => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'     => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'nama_divisi' => 'required',
         ]);
 
@@ -78,10 +78,10 @@ class DivisiController extends Controller
         }
 
         //check if image is not empty
-        if ($request->hasFile('gambar')) {
+        if ($request->hasFile('image')) {
 
             //upload image
-            $image = $request->file('gambar');
+            $image = $request->file('image');
             $image->storeAs('public/divisi', $image->hashName());
 
             //delete old image
@@ -89,7 +89,7 @@ class DivisiController extends Controller
 
             //update post with new image
             $divisi->update([
-                'gambar'     => $image->hashName(),
+                'image'     => $image->hashName(),
                 'nama_divisi' => $request->nama_divisi
             ]);
 

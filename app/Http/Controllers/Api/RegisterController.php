@@ -19,7 +19,7 @@ class RegisterController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8|confirmed',
-            'gambar'  => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image'  => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         // check if validator fails or not
@@ -27,15 +27,15 @@ class RegisterController extends Controller
             return response() -> json($validator->errors(),422);
         }
         
-        $image = $request->file('gambar');
-        $image->storeAs('public/divisi', $image->hashName());
+        $image = $request->file('image');
+        $image->storeAs('public/users', $image->hashName());
 
         // create user
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'gambar' => $image->hashName()
+            'image' => $image->hashName()
         ]);
         // return JSON response if user is created
         if($user){

@@ -16,11 +16,11 @@ class UpdateController extends Controller
     public function __invoke(Request $request)
     {
         $userId = auth()->guard('api')->user();
-        $user = User::where('id', $userId['id']);
-        
+        $user = User::where('id', $userId['id'])->first();
+
         //define validation rules
         $validator = Validator::make($request->all(), [
-            'gambar'     => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' => 'required',
             'email' => 'required',
             'password' => 'required'
@@ -30,29 +30,28 @@ class UpdateController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
-        $gambar = null;
         //check if image is not empty
-        if ($request->hasFile('gambar')) {
+        if ($request->hasFile('image')) {
 
             //upload image
-            $image = $request->file('gambar');
+            $image = $request->file('image');
             $image->storeAs('public/users', $image->hashName());
+
+            // delete image
+            Storage::delete('public/users/'.$user->image);
 
             //update user with new image
             $user->update([
-                'gambar'     => $image->hashName(),
-                'name'      => $request->name,
+                'image'  => $image->hashName(),
+                'name' => $request->name,
                 'password' => Hash::make($request->password),
-                'email'    => $request->email,
+                'email' => $request->email,
             ]);
 
-            // g bisa delete bang
-            Storage::delete('public/users/'.$user->image);
-
         } else {
+
             //update post without image
             $user->update([
-            
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
@@ -60,7 +59,7 @@ class UpdateController extends Controller
         }
         //return response
         return response()->json([
-            'success'=>true,
+            'success' => true,
             'message' => 'Data User berhasil diubah!',
         ]);
     }

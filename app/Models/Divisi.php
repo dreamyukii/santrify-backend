@@ -9,7 +9,7 @@ class Divisi extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'gambar',
+        'image',
         'nama_divisi'
     ];
 }

@@ -14,7 +14,7 @@ return new class extends Migration
 
         Schema::create('kamars', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('gambar')->nullable();
+            $table->string('image')->nullable();
             $table->string('nama_kamar');
             $table->string('status')->default('kosong');
             $table->timestamps();
@@ -22,7 +22,7 @@ return new class extends Migration
         });
         Schema::create('divisis', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('gambar')->nullable();
+            $table->string('image')->nullable();
             $table->string('nama_divisi');
             $table->timestamps();
         });

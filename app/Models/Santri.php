@@ -15,7 +15,7 @@ class Santri extends Model
         'status',
         'room',
         'divisi',
-        'gambar'
+        'image'
     ];
 
     protected $with = [ 'kamar','divisi'];
