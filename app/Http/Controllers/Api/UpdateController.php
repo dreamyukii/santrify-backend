@@ -20,7 +20,7 @@ class UpdateController extends Controller
         
         //define validation rules
         $validator = Validator::make($request->all(), [
-            'gambar'     => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar'     => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' => 'required',
             'email' => 'required',
             'password' => 'required'
@@ -30,22 +30,15 @@ class UpdateController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
-
+        $gambar = null;
         //check if image is not empty
         if ($request->hasFile('gambar')) {
-
-            $userId = auth()->guard('api')->user();
-            $user = User::where('id', $userId['id']);
 
             //upload image
             $image = $request->file('gambar');
             $image->storeAs('public/users', $image->hashName());
 
-            // g bisa delete bang
-            // $old_image = $user->getRawOriginal('gambar');
-            // Storage::delete($old_image);
-
-            //update post with new image
+            //update user with new image
             $user->update([
                 'gambar'     => $image->hashName(),
                 'name'      => $request->name,
@@ -53,11 +46,11 @@ class UpdateController extends Controller
                 'email'    => $request->email,
             ]);
 
+            // g bisa delete bang
+            Storage::delete('public/users/'.$user->image);
+
         } else {
             //update post without image
-            $userId = auth()->guard('api')->user();
-            $user = User::where('id', $userId['id']);
-            // dd($request->all());
             $user->update([
             
                 'name' => $request->name,

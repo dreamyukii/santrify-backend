@@ -43,7 +43,7 @@ class DivisiController extends Controller
         $image = $request->file('gambar');
         $image->storeAs('public/divisi', $image->hashName());
 
-        //create post
+        //create divisi
         $divisi = Divisi::create([
             'gambar'     => $image->hashName(),
             'nama_divisi' => $request->nama_divisi

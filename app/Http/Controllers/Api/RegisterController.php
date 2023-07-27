@@ -19,20 +19,23 @@ class RegisterController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8|confirmed',
-            'gambar'  => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'gambar'  => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         // check if validator fails or not
         if($validator->fails()){
             return response() -> json($validator->errors(),422);
         }
-        // create user
         
+        $image = $request->file('gambar');
+        $image->storeAs('public/divisi', $image->hashName());
+
+        // create user
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'gambar' => ''
+            'gambar' => $image->hashName()
         ]);
         // return JSON response if user is created
         if($user){
