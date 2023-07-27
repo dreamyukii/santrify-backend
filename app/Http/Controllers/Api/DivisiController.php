@@ -17,7 +17,7 @@ class DivisiController extends Controller
     public function index()
     {
         //get divisi
-        $divisis = Divisi::oldest()->paginate(10);
+        $divisis = Divisi::oldest()->paginate(1000);
 
         // return list divisi
         return new PostResource(true,'List Divisi', $divisis);

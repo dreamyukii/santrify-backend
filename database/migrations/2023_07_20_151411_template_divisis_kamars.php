@@ -13,7 +13,7 @@ return new class extends Migration
     {
         DB::table('kamars')->insert([
             array(
-                'nama_kamar' => "Budak Pantura",
+                'nama_kamar' => "Schale",
                 'id' => 1,
                 'status' => "kosong",
             )
@@ -22,7 +22,7 @@ return new class extends Migration
 
         DB::table('divisis')->insert([
             array(
-                'nama_divisi' => "Rakyat Belanda",
+                'nama_divisi' => "Kelas 1A",
                 'id' => 1
             )
         ]);
