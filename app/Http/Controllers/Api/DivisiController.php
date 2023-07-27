@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+
 use App\Models\Divisi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

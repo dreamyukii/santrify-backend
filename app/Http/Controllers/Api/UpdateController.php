@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api;
 
 use App\Models\User;
@@ -7,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UpdateController extends Controller
@@ -38,12 +36,14 @@ class UpdateController extends Controller
 
             $userId = auth()->guard('api')->user();
             $user = User::where('id', $userId['id']);
+
             //upload image
             $image = $request->file('gambar');
             $image->storeAs('public/users', $image->hashName());
 
-            //delete old imageo
-            Storage::delete('public/users/'.$user->image);
+            // g bisa delete bang
+            // $old_image = $user->getRawOriginal('gambar');
+            // Storage::delete($old_image);
 
             //update post with new image
             $user->update([
@@ -54,7 +54,6 @@ class UpdateController extends Controller
             ]);
 
         } else {
-
             //update post without image
             $userId = auth()->guard('api')->user();
             $user = User::where('id', $userId['id']);
