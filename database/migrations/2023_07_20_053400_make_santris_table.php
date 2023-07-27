@@ -23,10 +23,6 @@ return new class extends Migration
             $table->foreign('room')->references('id')->on('kamars');
             $table->foreign('divisi')->references('id')->on('divisis');
         });
-
-
-
-
     }
 
     /**

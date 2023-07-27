@@ -18,11 +18,8 @@ class Santri extends Model
         'gambar'
     ];
 
-    // public function kamar()
-    // {
-    //     return $this->hasOne('App\Kamar');
-    // }
     protected $with = [ 'kamar','divisi'];
+    
     public function kamar()
     {
         return $this->belongsTo(Kamar::class, 'room','id');

@@ -11,14 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('santris', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->string('gender');
-            $table->string('status');
-            $table->string('room');
-            $table->string('division');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('gambar')->nullable()->after('remember_token')->nullable();
         });
     }
 
@@ -27,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('santris');
+        // Schema::table('users', function (Blueprint $table) {
+        //     $table->dropColumn('gambar');
+        // });
     }
 };

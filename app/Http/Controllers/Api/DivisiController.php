@@ -16,7 +16,7 @@ class DivisiController extends Controller
     public function index()
     {
         //get divisi
-        $divisis = Divisi::latest()->paginate(10);
+        $divisis = Divisi::oldest()->paginate(10);
 
         // return list divisi
         return new PostResource(true,'List Divisi', $divisis);
@@ -45,7 +45,7 @@ class DivisiController extends Controller
         //create post
         $divisi = Divisi::create([
             'gambar'     => $image->hashName(),
-            'nama_divisi'      => $request->nama_divisi
+            'nama_divisi' => $request->nama_divisi
         ]);
 
         //return response
@@ -60,8 +60,6 @@ class DivisiController extends Controller
         //
         return new PostResource(true, 'Data Divisi Ditemukan!', $divisi);
     }
-
-
     /**
      * Update the specified resource in storage.
      */
@@ -91,15 +89,14 @@ class DivisiController extends Controller
             //update post with new image
             $divisi->update([
                 'gambar'     => $image->hashName(),
-                'nama_divisi'   => $request->nama_divisi
+                'nama_divisi' => $request->nama_divisi
             ]);
 
         } else {
 
             //update post without image
             $divisi->update([
-            
-            'nama_divisi'   => $request->nama_divisi
+            'nama_divisi'  => $request->nama_divisi
             ]);
         }
 

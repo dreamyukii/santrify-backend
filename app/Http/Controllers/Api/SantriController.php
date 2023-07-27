@@ -14,7 +14,7 @@ class SantriController extends Controller
     public function index()
     {
         //get santri
-        $santris = Santri::oldest()->paginate(50);
+        $santris = Santri::latest()->paginate(50);
 
         //return collection of posts as a resource
         return new PostResource(true, 'List Data Santri', $santris);
