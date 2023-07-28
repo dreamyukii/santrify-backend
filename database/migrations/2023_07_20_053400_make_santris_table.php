@@ -17,11 +17,12 @@ return new class extends Migration
             $table->string('image');
             $table->string('gender');
             $table->string('status')->default('aktif');
+            $table->string('bill');
             $table->integer('room')->unsigned();
-            $table->integer('divisi')->unsigned();
+            $table->integer('kelas')->unsigned();
             $table->timestamps();
             $table->foreign('room')->references('id')->on('kamars');
-            $table->foreign('divisi')->references('id')->on('divisis');
+            $table->foreign('kelas')->references('id')->on('divisis');
         });
     }
 

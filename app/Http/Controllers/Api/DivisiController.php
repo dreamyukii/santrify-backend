@@ -31,7 +31,7 @@ class DivisiController extends Controller
         //define validation rules
         $validator = Validator::make($request->all(), [
             'nama_divisi' => 'required',
-            'image'    => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'image'    => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         //check if validation fails
@@ -68,7 +68,7 @@ class DivisiController extends Controller
     {
          //define validation rules
         $validator = Validator::make($request->all(), [
-            'image'     => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'     => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'nama_divisi' => 'required',
         ]);
 

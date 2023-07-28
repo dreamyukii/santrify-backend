@@ -31,7 +31,7 @@ class KamarController extends Controller
          $validator = Validator::make($request->all(), [
             'nama_kamar' => 'required',
             'status' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         //check if validation fails
@@ -71,7 +71,7 @@ class KamarController extends Controller
                  $validator = Validator::make($request->all(), [
                     'nama_kamar' => 'required',
                     'status' => 'required',
-                    'image'    => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+                    'image'    => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
                 ]);
         
                 //check if validation fails

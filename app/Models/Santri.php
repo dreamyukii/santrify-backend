@@ -14,7 +14,8 @@ class Santri extends Model
         'gender',
         'status',
         'room',
-        'divisi',
+        'bill',
+        'kelas',
         'image'
     ];
 
@@ -27,7 +28,7 @@ class Santri extends Model
 
     public function divisi()
     {
-        return $this->belongsTo(Divisi::class, 'divisi','id');
+        return $this->belongsTo(Divisi::class, 'kelas','id');
     }
 
 }
