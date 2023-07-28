@@ -1,27 +1,19 @@
-# Santrify
+# santrify-backend
 
 ## Getting Started
+1.Clone this repo
 
-First, run the development server:
+2.Start Laragon/XAMPP then run this command
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-Start Laragon/XAMPP
+     composer install
+     php artisan key:generate  
+     php artisan cache:clear
+     php artisan migrate
+     php artisan serve
+     php artisan jwt:secret
+     php artisan storage:link
 
-1. composer install
-2. php artisan key:generate  
-3. php artisan cache:clear
-4. php artisan migrate
-5. php artisan serve
-6. php artisan jwt:secret
-7. php artisan storage:link
+3.Start the server:
 
-to start developing:
-
-php artisan serve
+        php artisan serve
 
