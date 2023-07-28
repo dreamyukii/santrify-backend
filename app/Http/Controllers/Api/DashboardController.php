@@ -12,7 +12,6 @@ class DashboardController extends Controller
     //
     public function index(){
         $totaldana = Santri::sum('bill');
-
         return new PostResource(true,'Total Dana', $totaldana);
     }
 }
